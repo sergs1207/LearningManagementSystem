@@ -1,0 +1,110 @@
+﻿@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	<!-- When the quiz is finished then its result will be displayed here -->
+	@if (ViewBag.finish == "yes")
+	{
+		<br><buttontype ="button" style="float:right; margin-right:15px;" class="btn btnsuccess"
+						onclick="location.href='@Url.Action("StartQuiz", "Student",
+null)'">
+			<spanclass ="glyphicon glyphicon-backward">
+				</span>Back to Start
+		   Quiz </ button >< br >< br >
+		   < divstyle = "border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+		   4px; background - color:white; ">
+		   162
+		   < tableclass = "table table-bordered" >
+		   < tr >
+		   < th >< h3style = "font-family:Calibri; text-align:center; font-size:18px" >< b > Obtained
+		   Marks </ b ></ h3 ></ th >
+		   < th >< h3style = "font-family:Calibri; text-align:center; font-size:18px" >< b > Total
+		   Marks </ b ></ h3 ></ th >
+		   </ tr >
+		   < tr >
+		   < td >< pstyle = "font-family:Calibri; text-align:center; fontsize:
+		   15px"><b>@ViewBag.ObtainedMarks</b></p></td>
+		   < td >< pstyle = "font-family:Calibri; text-align:center; fontsize:
+		   15px"><b>@ViewBag.TotalMarks</b></p></td>
+		   </ tr >
+		   </ table >
+		   </ div >
+		   }
+	elseif (ViewBag.Question == null)
+	{
+	<!-- this will show a message for telling that there are no quiz is scheduled against this
+	course -->
+	<br><buttontype ="button" style="float:right; margin-right:15px;" class="btn btnsuccess"
+					onclick="location.href='@Url.Action("StartQuiz", "Student",
+
+null)'">
+		<spanclass ="glyphicon glyphicon-backward">
+			</span> Back to Start
+			Quiz</button><br><br>
+			<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+				<table>
+					<tr>
+						<td>
+							<pstyle ="font-family:Calibri; font-size:18px">
+								<b>
+									No quiz scheduled against this
+									course !
+								</b></p>
+						</td>
+					</tr>
+				</table>
+				</div>
+				}
+				elseif (ViewBag.Question != null)
+				{
+				<br><h3style ="margin-left:10px; text-align:center;">
+					Quiz</h3>
+					<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+						<formaction ="/Student/Quiz" method="post">
+							<inputtype ="text" name="QuizID" value="@ViewBag.QuizID" hidden />
+							<tableclass ="table table-borderless">
+								<tr>
+								
+									<tdstyle ="width:10px; overflow:hidden;">
+										</td>
+										<!-- Quiz's question will be displayed here -->
+										<tdstyle ="overflow:hidden;text-overflow:ellipsis;">
+											<h3><b>Question:</b></h3><br>
+											<center>
+												<pstyle ="font-family:Calibri;fontsize:
+18px;">@ViewBag.Question.Question</p>
+</center><inputtype ="text" value="@Vie
+wBag.Question.ID" name="QuestionID" hidden />
+</td>
+</tr>
+<!-- Question's options will be displayed here -->
+@foreach (var o in ViewBag.Options)
+{
+	<tr>
+		<tdstyle ="text-align:right;">
+			<inputtype ="radio" value="@o.ID" name="SelectedOption" />
+			</td>
+			<td>
+				<pstyle ="font-family:Calibri;font-size:15px;">@o.Option</p>
+			</td>
+	</tr>
+}
+<tr>
+	
+	<td></td>
+	<td>
+		<center>
+			<buttontype ="submit" class="btn btn-success">
+				Next Question
+				<spanclass ="glyphicon glyphicon-forward"></span></button>
+		</center>
+	</td>
+</tr>
+</table>
+</form>
+</div>
+}
+</div>

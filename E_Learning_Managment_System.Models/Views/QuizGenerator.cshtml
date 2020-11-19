@@ -1,0 +1,63 @@
+﻿@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	<br><h4style ="color:red;margin-left:10px;">
+		Note:</h4>
+	
+		<pstyle ="color:red;margin-left:10px;">
+			Only those courses will be shown in drop down
+			list that have question bank !</p>
+			<h3style ="margin-left:10px; text-align:center;">
+				Quiz Generator</h3>
+				<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 30px; borderradius:
+4px; background-color:white;">
+					<formaction ="/Instructor/SelectQuestions">
+						<!-- Title of the Quiz will be entered here -->
+						<labelstyle ="font-family:Calibri;font-size:15px;">
+							Title:</label>
+							<inputtype ="text" name="Title" class="form-control" style="font-family:Calibri;fontsize:
+15px;" /><br>
+							<!-- Course for the quiz will be selected from this dropdownlist -->
+							<labelstyle ="font-family:Calibri;font-size:15px;">
+								Course:</label>
+								<selectname ="CourseID" class="form-control" style="font-family:Calibri;fontsize:
+15px;">
+									<optiondisabledselected>
+										--Select a Course--</option>
+										@foreach (var course in Model)
+										{
+											<optionvalue ="@course.CourseID">
+												Code: @course.CourseID, Title:
+												@course.CourseTitle</option>
+											}
+										</select><br>
+									
+										<!-- Submit Button -->
+										<center>
+											<inputtype ="submit" value="Generate" style="width:15%;" class="btn btnprimary">
+												</
+												center>
+												</form>
+												</div>
+												</div>
+												<script>
+//Funtion for the form validation
+$(function () {
+$("form").validate({
+rules: {
+Title: "required",
+CourseID: "required",
+},
+messages: {
+Title: "Field cannot be empty !",
+CourseID: "Field cannot be empty !",
+},
+submit: function (form) {
+form.submit();
+
+}
+});
+});
+												</script>

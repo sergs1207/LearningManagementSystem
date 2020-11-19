@@ -1,0 +1,111 @@
+﻿<!-- login page for LME4U-->
+@model E_Learning_Managment_System.Models.ViewModel.LoginViewModel
+<head>
+	<title>Home Page</title>
+	<linktype ="text/css" href="~/Design/css/vendor/all.css" rel="stylesheet">
+		<linktype ="text/css" href="~/Design/css/app/app.css" rel="stylesheet" />
+</head>
+<bodyclass ="login">
+	<divid ="content">
+		<divclass ="container-fluid">
+			<divclass ="lock-container">
+				<divclass ="panel panel-default text-center paper-shadow" data-z="0.5">
+					<h1class ="text-display-1 text-center margin-bottom-none">
+						Sign In</h1>
+						<imgsrc ="~/Views/Home/images/login.png" class="img-circle width-80">
+							
+							@if (ViewBag.Message != null)
+							{
+								<!-- login error message will be shown here -->
+								<divclass ="alert alert-danger alert-dismissable fade in" style="text-align:center;">
+									<ahref ="#" class="close" data-dismiss="alert" aria-label="close">
+										&times;</a>
+										@ViewBag.Message
+										</div>
+									}
+							<!-- Form -->
+							@using (Html.BeginForm())
+							{
+								<divclass ="panel-body">
+									<!-- Email will be entered here -->
+									<divclass ="form-group">
+										@Html.TextBoxFor(m => m.Email, null, new
+										{
+											@class = "formcontrol",
+										id = "username",
+											placeholder = "Enter Email"
+										})
+										@Html.ValidationMessageFor(m => m.Email, "", new
+										{
+											@style =
+										"color:red"
+										})
+										</div>
+										<!-- Paswword will be entered here -->
+										<divclass ="form-group">
+											@Html.PasswordFor(m => m.password, new
+											{
+												@class = "formcontrol",
+											id = "password",
+												placeholder = "Enter Password"
+											})
+											
+											@Html.ValidationMessageFor(m => m.password, "", new
+											{
+												@style =
+											"color:red"
+											})
+											</div>
+											<!-- Submit Button -->
+											<inputtype ="submit" value="Login" class="btn btn-primary" /><iclass ="fa fa-fw faunlock-
+alt">
+												</i>
+												<ahref ="#" class="forgot-password">
+													Forgot password?</a>
+													<!-- Signup link -->
+													@Html.ActionLink("Create Account", "SignUp", "Instructor", null, new
+													{
+													@class = "link-text-color"
+													})
+													</div>
+												}
+							</div>
+							</div>
+							</div>
+							</div>
+							<!-- Footer -->
+							<footerclass ="footer">
+								<strong>App By DiptiArora</strong>&copy; Copyright 2017
+								</footer>
+								<!-- // Footer -->
+								<!-- Inline Script for colors and config objects; used by various external scripts; -->
+								<script>
+
+var colors = {
+"danger-color": "#e74c3c",
+"success-color": "#81b53e",
+"warning-color": "#f0ad4e",
+"inverse-color": "#2c3e50",
+"info-color": "#2d7cb5",
+"default-color": "#6e7882",
+"default-light-color": "#cfd9db",
+"purple-color": "#9D8AC7",
+"mustard-color": "#d4d171",
+"lightred-color": "#e15258",
+"body-bg": "#f6f6f6"
+};
+var config = {
+theme: "html",
+skins: {
+"default": {
+"primary-color": "#42a5f5"
+}
+}
+};
+								</script>
+								<scriptsrc ="~/Design/js/vendor/all.js">
+									</script>
+									
+									<scriptsrc ="~/Design/js/app/app.js">
+										</script>
+										</body>

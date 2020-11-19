@@ -1,0 +1,196 @@
+﻿//adding questions on the HTML page for LME4U
+@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	<br><h3style ="margin-left:10px; text-align:center;">
+		Add Question</h3>
+		<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 30px; borderradius:4px; background-color:white;">
+			<br>
+			<!-- Form -->
+			@using (Html.BeginForm())
+			{
+				<divclass ="container" style="width:80%;">
+					<tableclass ="table table-striped table-bordered">
+
+						<!-- Question field -->
+						<tr>
+							<td></td>
+							<td>@Html.Label("Question")</td>
+							<td>@Html.TextArea("Question", new { @class = "form-control" })</td>
+						</tr>
+						<!-- Option1 field -->
+						<tr>
+							<td><inputtype ="radio" name="Check" checkedvalue="1"></td>
+							<td>@Html.Label("Option 1:")</td>
+							<td>@Html.TextArea("Option1", new { @class = "form-control" })</td>
+						</tr>
+						<!-- Option2 field -->
+						<tr>
+							<td><inputtype ="radio" name="Check" value="2"></td>
+							<td>@Html.Label("Option 2:")</td>
+							<td>@Html.TextArea("Option2", new { @class = "form-control" })</td>
+						</tr>
+						<!-- Option3 field -->
+						<tr>
+							<td><inputtype ="radio" name="Check" value="3"></td>
+							<td>@Html.Label("Option 3:")</td>
+							<td>@Html.TextArea("Option3", new { @class = "form-control" })</td>
+
+						</tr>
+						<!-- Option4 field -->
+						<tr>
+							<td><inputtype ="radio" name="Check" value="4"></td>
+							<td>@Html.Label("Option 4:")</td>
+							<td>@Html.TextArea("Option4", new { @class = "form-control" })</td>
+						</tr>
+						<!-- Buttons Container -->
+						<tr>
+							<td></td>
+							<td></td>
+							<td>
+								<inputtype ="text" name="CourseID" value="@ViewBag.CourseID" hidden />
+								<inputtype ="submit" style="width:150px;" value="Add" class="btn btn-primary" />
+								<buttontype ="button" class="btn btnsuccess"
+											onclick="location.href='@Url.Action(" ShowQuestions", "Instructor" , new {
+										CourseID=ViewBag.CourseID})'">
+									<spanclass ="glyphicon glyphiconbackward">
+										</
+										span>Back To Questions </button>
+
+								  <buttontype = "button" class="btn btnsuccess"
+																onclick="location.href='@Url.Action(" ShowMyCourses", "Instructor" , null)'">
+																<spanclass ="glyphicon glyphicon-backward">
+																	</span> Back To My
+																	Courses</button>
+												</td>
+											</tr>
+
+											</table>
+											</div>
+											}
+			</div>
+			</div>
+			<script>
+				$(function () {
+					$("form").validate({
+						rules: {
+							Question: "required",
+							Option1: "required",
+							Option2: "required",
+							Option3: "required",
+							Option4: "required",
+						},
+						messages: {
+							Question: "Field cannot be empty !",
+							Option1: "Field cannot be empty !",
+							Option2: "Field cannot be empty !",
+
+							Option3: "Field cannot be empty !",
+							Option4: "Field cannot be empty !",
+						},
+						submit: function (form) {
+							form.submit();
+						}
+					});
+				});
+			</script>
+			change.cshtml
+			@{
+				ViewBag.Title = "LearningMadeEasy4u";
+								Layout = "~/Views/Shared/InstructorLayout.cshtml";
+			}
+			<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+				<br><h3style ="margin-left:10px; text-align:center;">
+					Add Question</h3>
+					<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 30px; borderradius:
+4px; background-color:white;">
+						<br>
+
+						<!-- Form -->
+						@using (Html.BeginForm())
+														{
+						<divclass ="container" style="width:80%;">
+							<tableclass ="table table-striped table-bordered">
+								<!-- Question field -->
+<tr>
+	<td></td>
+	<td>@Html.Label("Question")</td>
+	<td>@Html.TextArea("Question", new { @class = "form-control" })</td>
+</tr>
+<!-- Option1 field -->
+<tr>
+	<td><inputtype ="radio" name="Check" checkedvalue="1"></td>
+	<td>@Html.Label("Option 1:")</td>
+	<td>@Html.TextArea("Option1", new { @class = "form-control" })</td>
+</tr>
+<!-- Option2 field -->
+<tr>
+	<td><inputtype ="radio" name="Check" value="2"></td>
+	<td>@Html.Label("Option 2:")</td>
+	<td>@Html.TextArea("Option2", new { @class = "form-control" })</td>
+</tr>
+
+<!-- Option3 field -->
+<tr>
+	<td><inputtype ="radio" name="Check" value="3"></td>
+	<td>@Html.Label("Option 3:")</td>
+	<td>@Html.TextArea("Option3", new { @class = "form-control" })</td>
+</tr>
+<!-- Option4 field -->
+<tr>
+	<td><inputtype ="radio" name="Check" value="4"></td>
+	<td>@Html.Label("Option 4:")</td>
+	<td>@Html.TextArea("Option4", new { @class = "form-control" })</td>
+</tr>
+<!-- Buttons Container -->
+<tr>
+	<td></td>
+	<td></td>
+	<td>
+		<inputtype ="text" name="CourseID" value="@ViewBag.CourseID" hidden />
+		<inputtype ="submit" style="width:150px;" value="Add" class="btn btn-primary" />
+		<buttontype ="button" class="btn btnsuccess"
+					onclick="location.href='@Url.Action(" ShowQuestions", "Instructor" , new {
+															CourseID=ViewBag.CourseID})'">
+			<spanclass ="glyphicon glyphiconbackward">
+				</span> Back To Questions</button>
+
+																		<buttontype ="button" class="btn btnsuccess"
+																					onclick="location.href='@Url.Action(" ShowMyCourses", "Instructor" ,
+																					null)'">
+																			<spanclass ="glyphicon glyphicon-backward">
+																				</span> Back To My
+																				Courses</button>
+															</td>
+														</tr>
+														</table>
+														</div>
+														}
+						</div>
+						</div>
+						<script>
+							$(function () {
+								$("form").validate({
+									rules: {
+										Question: "required",
+										Option1: "required",
+										Option2: "required",
+										Option3: "required",
+										Option4: "required",
+
+									},
+									messages: {
+										Question: "Field cannot be empty !",
+										Option1: "Field cannot be empty !",
+										Option2: "Field cannot be empty !",
+										Option3: "Field cannot be empty !",
+										Option4: "Field cannot be empty !",
+									},
+									submit: function (form) {
+										form.submit();
+									}
+								});
+							});
+						</script>

@@ -1,0 +1,236 @@
+﻿// To exchange messages with students and instructors for LME4U
+@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<style>
+	.disabled {
+		pointer-events: none;
+		cursor: default;
+		opacity: 0.5;
+	}
+
+	#historyclick:hover {
+		-o-box-shadow: 2px 2px 19px #CCC;
+		-webkit-box-shadow: 2px 2px 19px #CCC;
+		-moz-box-shadow: 2px 2px 19px #CCC;
+	}
+
+	#historyclick:active {
+		-o-box-shadow: 2px 2px 19px #FFCC00;
+		-webkit-box-shadow: 2px 2px 19px #FFCC00;
+		-moz-box-shadow: 2px 2px 19px #FFCC00;
+	}
+</style>
+<!-- Input field with the name of user who is loggged in but the field is hidden -->
+<input id="sessionvalue" value="@Session["Name"].ToString()" hidden />
+<!-- Inpout field with the id of the user who is logged in but the field is hidden -->
+<input id="sessionid" value="@Session["InstructorID"].ToString()" hidden />
+<div class="st-pusher well" style="overflow:scroll;" id="content">
+	<div class="st-content">
+		<!-- extra div for emulating position:fixed of the menu -->
+		<div class="st-content-inner padding-none">
+			<div class="container-fluid">
+				<div class="page-section third">
+					<div class="media messages-container media-clearfix-xs-min media-grid">
+						<div class="media-left">
+							<!-- Input field for entering the name of recipient to the the message -->
+							<input style="width:250px;" class="form-control" id="searchTerm" name="searchTerm"
+								   placeholder="Write name..." type="text" />
+						</div>
+						<div class="media-body">
+							<div class="form-group">
+								
+								<div class="input-group">
+									<div class="input-group-btn disabled" id="SendButton">
+										<!-- Button for sending the message -->
+										<a class="btn btn-primary" onclick="SendMessage()">
+											<i class="fa fa-envelope"></i> Send
+										</a>
+									</div>
+									<!-- /btn-group -->
+									<div id="MessageBody" class="disabled">
+										<!-- Input field for entering the message -->
+										<input type="text" id="WriteMessage" class="form-control share-text"
+											   placeholder="Write message..." />
+									</div>
+								</div>
+								<!-- Container in which all of the messages will be shown -->
+								<div id="refresh" style="float:right;">
+									<a class="btn btn-success" onclick="GetMessages()">
+										<i class="fa fa-refresh"></i> Refresh Messages
+									</a>
+								</div><br><br>
+								<!-- /input-group -->
+							</div>
+							<!-- Messages Container -->
+							
+							<div id="MessageContent">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /st-content-inner -->
+	</div>
+</div>
+<script type="text/javascript">
+var id = 0;
+var senderType = "instructor";
+var recieverType;
+var name = null;
+var check = "not selected";
+//whenever the page opens this function is called everytime which then further calls
+GetMessages() in it self
+$(function () {
+
+$(document).ready(function () {
+GetMessages();
+});
+});
+//Function for getting the name suggestion when writing the recipient name in write
+name input field
+$(function () {
+$("#searchTerm").autocomplete({
+source: function (request, response) {
+$.ajax({
+url: '/Home/AutocompleteSuggestions/',
+data: "{ 'prefix': '" + request.term + "' , 'senderType': '" + senderType + "'}",
+dataType: "json",
+type: "POST",
+contentType: "application/json; charset=utf-8",
+success: function (data) {
+$("#SendButton").addClass("disabled");
+$("#MessageBody").addClass("disabled");
+$("#MessageContent").html("");
+check = "not selected";
+GetMessages();
+response($.map(data, function (item) {
+
+return item;
+}))
+},
+error: function (response) {
+},
+failure: function (response) {
+}
+});
+},
+select: function (e, i) {
+id = i.item.val;
+recieverType = i.item.recieverType;
+senderType = i.item.senderType;
+name = i.item.label;
+check = "selected";
+$("#SendButton").removeClass("disabled");
+$("#MessageBody").removeClass("disabled");
+GetMessages();
+},
+minLength: 1
+});
+});
+
+//Function for sending message
+function SendMessage() {
+if ($("#WriteMessage").val() != '')
+{
+var message = $("#WriteMessage").val();
+var Message = { MessageBody: message, Id: id, name: name, senderType:
+senderType, recieverType: recieverType };
+$("#WriteMessage").val('');
+$.post("/Home/SendMessage", Message, function (data) {
+GetMessages();
+});
+}
+else
+{
+alert("Message cannot be null !");
+}
+}
+//Funtion for getting all of the messages to be shown in messages container
+function GetMessages() {
+if (check == "not selected")
+{
+
+var sessionid = $("#sessionid").val();
+var Message = { Id: sessionid, senderType: senderType };
+$.post("/Home/GetAllMessages", Message, function (data) {
+var htmlBody = "";
+var sessionValue = $("#sessionvalue").val();
+$.each(data, function (index, value) {
+htmlBody += "<div id='historyclick' class='panel panel-default papershadow'>"
++
+"<input type='text' id='id' value=" + value.id + " hidden />" +
+"<input type='text' id='name' value=" + value.name + " hidden />" +
+"<input type='text' id='recieverType' value=" + value.recieverType + "
+hidden />" +
+"<div class='panel-body'><div class='media v-middle'><div class='mediabody
+message'>" +
+"<h4 class='text-subhead margin-none'><a href='#'>" + value.name +
+"</a></h4>" +
+"<p class='text-caption text-light'><i class='fa fa-clock-o'></i> " +
+value.dateTime + "</p>" +
+"</div></div><p>" + value.messageBody + "</p></div></div>";
+
+});
+$("#MessageContent").html(htmlBody);
+});
+}
+else if (check == "selected")
+{
+var Message = { Id: id, name: name, senderType: senderType, recieverType:
+recieverType };
+$.post("/Home/GetMessages", Message, function (data) {
+var htmlBody = "";
+var sessionValue = $("#sessionvalue").val();
+$.each(data, function (index, value) {
+if (value.name == sessionValue) {
+htmlBody += "<div class='panel panel-default paper-shadow' style='textalign:
+right;background-color:#B5E9FD;' data-z='0.5' data-hover-z='1' data-animated>" +
+"<div class='panel-body'><div class='media v-middle'><div
+class='media-body message'>" +
+"<h4 class='text-subhead margin-none'><a href='#'>Me</a></h4>" +
+
+"<p class='text-caption text-light'><i class='fa fa-clock-o'></i> " +
+value.dateTime + "</p>" +
+"</div></div><p>" + value.messageBody + "</p></div></div>";
+}
+else {
+htmlBody += "<div class='panel panel-default paper-shadow'
+style='background-color:#FCFDB5;' data-z='0.5' data-hover-z='1' data-animated>" +
+"<div class='panel-body'><div class='media v-middle'><div
+class='media-body message'>" +
+"<h4 class='text-subhead margin-none'><a href='#'>" + value.name +
+"</a></h4>" +
+"<p class='text-caption text-light'><i class='fa fa-clock-o'></i> " +
+value.dateTime + "</p>" +
+"</div></div><p>" + value.messageBody + "</p></div></div>";
+}
+});
+$("#MessageContent").html(htmlBody);
+});
+}
+}
+
+//Whenever you click on the message in all message's chat history then this function is
+called
+$('body').on('click', '#historyclick', function () {
+var recieverId = $(this).children("#id").val();
+var recieverName = $(this).children("#name").val();
+var type = $(this).children("#recieverType").val();
+var chk = $(this).children("#check").val();
+$("#searchTerm").val(recieverName);
+id = recieverId;
+recieverType = type;
+name = recieverName;
+check = "selected";
+var Message = { Id: id, name: name, senderType: senderType, recieverType:
+recieverType };
+$("#SendButton").removeClass("disabled");
+$("#MessageBody").removeClass("disabled");
+$("#MessageContent").html("");
+GetMessages();
+});
+</script>
+

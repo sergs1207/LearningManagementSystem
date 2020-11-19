@@ -1,0 +1,33 @@
+﻿<!-- All questions that were selected to be given in the quiz will be shown here for
+LME4U-->
+@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	<br>
+	<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+		<tableclass ="table table-bordered table-striped" style="table-layout:fixed">
+			<tr>
+				
+				<thstyle ="width:318px; text-align:center;">
+					<h3>Questions</h3>
+					</th>
+			</tr>
+			<!-- All questions that were selected to be given in the quiz will be shown here -->
+			@foreach (var q in Model)
+			{
+				<tr>
+					<tdstyle ="padding-left:10px;">@q.Question</td>
+				</tr>
+			}
+			</table>
+			<buttontype ="button" class="btn btnsuccess"
+						onclick="location.href='@Url.Action("ShowQuizes", "Instructor",
+null)'">
+				<spanclass ="glyphicon glyphicon-backward">
+					</span> Back To Show Existing
+					Quizes</button>
+					</div>
+					</div>

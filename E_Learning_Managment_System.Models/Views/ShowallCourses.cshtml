@@ -1,0 +1,61 @@
+﻿@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	<br><h3style ="margin-left:10px; text-align:center;">
+		Courses</h3>
+		<!-- If there are courses in the database then they will be shown here -->
+		@if (ViewBag.Courses.Count > 0)
+		{
+			foreach (var c in ViewBag.Courses)
+			{
+				<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+					
+					<table>
+						<tr>
+							<td>
+								<pstyle ="font-family:Calibri; font-size:18px">
+									<b>
+										Course
+										Title
+									</b>&nbsp;&nbsp;&nbsp;&nbsp;:</p>
+							</td>
+							<td>
+								<pstyle ="font-family:'Times New Roman', Times, serif;font-size:15px;textalign:
+center;">&nbsp;&nbsp;&nbsp;&nbsp;@c.CourseTitle</p>
+</td>
+</tr>
+<tr>
+	<td>
+		<pstyle ="font-family:Calibri; font-size:15px;text-align:right;">
+			<b>
+				Course
+				ID&nbsp;&nbsp;&nbsp;&nbsp;
+			</b>:</p>
+	</td>
+	<td>
+		<pstyle ="font-family:'Times New Roman', Times, serif;font-size:15px;textalign:
+left;">&nbsp;&nbsp;&nbsp;&nbsp;@c.CourseID</p>
+</td>
+</tr>
+</table>
+</div>
+}
+}
+else
+{
+<!-- If there are no courses in the database then "no courses" message will be shown here
+-->
+<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+	
+	<table>
+		<tr>
+			<td><pstyle ="font-family:Calibri; font-size:18px"><b>No Courses</b></p></td>
+		</tr>
+	</table>
+	</div>
+}
+		</div>

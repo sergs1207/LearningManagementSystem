@@ -1,0 +1,37 @@
+﻿@model List<string>
+@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	<br><h3style ="margin-left:10px; text-align:center;">
+		Download Files</h3>
+		<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+			<tablestyle ="width:100%;" class="table table-bordered">
+				<tr>
+					<th>File Name</th>
+					<th>Link</th>
+				</tr>
+				@for (var i = 0; i <= Model.Count - 1; i++)
+				{
+					<tr>
+						<!-- File Name -->
+						<td>
+							@Model[i].ToString()
+						</td>
+						<!-- File Download Link -->
+						<td>
+							@Html.ActionLink("Download", "Download", new
+							{
+								FileName =
+							@Model[i].ToString()
+							})
+						</td>
+					</tr>
+				}
+				
+				</table>
+				</div>
+				</div>

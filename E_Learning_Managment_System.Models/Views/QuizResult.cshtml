@@ -1,0 +1,48 @@
+﻿<!—Used to calculate the result of the quiz for LME4U-->
+	@{
+		ViewBag.Title = "LearningMadeEasy4u";
+		Layout = "~/Views/Shared/StudentLayout.cshtml";
+	}
+	<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+		<br><h3style ="text-align:center;">
+			Results</h3>
+			<!-- Quizes Result -->
+			<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+				<tablestyle ="width:100%;" class="table table-bordered">
+					<tr>
+						<th>Quiz ID</th>
+						<th>Student ID</th>
+						<th>Instructor ID</th>
+						<th>Course Code</th>
+						
+						<th>Total Marks</th>
+						<th>Obtained Marks</th>
+					</tr>
+					@foreach (var r in Model)
+					{
+						<tr>
+							<td>
+								@r.QuizID
+							</td>
+							<td>
+								@r.StudentID
+							</td>
+							<td>
+								@r.InstructorID
+							</td>
+							<td>
+								@r.CourseID
+							</td>
+							<td>
+								@r.TotalMarks
+							</td>
+							<td>
+								@r.ObtainedMarks
+								
+							</td>
+						</tr>
+					}
+					</table>
+					</div>
+					</div>

@@ -1,0 +1,85 @@
+﻿<!-- Homepage after login for instructor for LME4U-->
+@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	
+Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<!-- Homepage after login -->
+<divclass ="st-pusher" id="content">
+	<!-- sidebar effects INSIDE of st-pusher: -->
+	<!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+	<!-- this is the wrapper for the content -->
+	<divclass ="st-content">
+		<!-- extra div for emulating position:fixed of the menu -->
+		<divclass ="st-content-inner padding-none">
+			<divclass ="container-fluid">
+				<divclass ="page-section">
+					<h1class ="text-display-1">
+						Dashboard</h1>
+						</div>
+						<divclass ="row" data-toggle="isotope">
+							<divclass ="item col-xs-12 col-lg-6">
+								<!-- Courses container -->
+								<divclass ="panel panel-default paper-shadow" data-z="0.5">
+									<divclass ="panel-heading">
+										<h4class ="text-headline margin-none">
+											My Courses</h4>
+											<pclass ="text-subhead text-light">
+												Your recent courses</p>
+												</div>
+												<ulclass ="list-group">
+													
+													@if (ViewBag.mycourses.Count > 0)
+													{
+														var i = 1;
+														foreach (var c in ViewBag.mycourses)
+														{
+															if (i <= 3)
+															{
+																<liclass ="list-group-item media v-middle">
+																	<divclass ="media-body">
+																		<ahref ="#" class="text-subhead list-group-link">
+																			@c.CourseTitle</a>
+																		</div>
+																		<div class ="media-right">
+																			<divclass ="progress progress-mini width-100 margin-none">
+																				<divclass ="progress-bar progress-bar-green-300" role="progressbar" ariavaluenow="
+45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+																					</div>
+																					</div>
+																					</div>
+																					</li>
+																					i++;
+																				}
+																				else
+																				{
+																					
+																				break;
+																				}
+																			}
+																		}
+																		else
+																		{
+																			<liclass ="list-group-item media v-middle">
+																				<divclass ="media-body">
+																					<ahref ="#" class="text-subhead list-group-link">
+																						No courses assigned yet!</a>
+																						</div>
+																						</li>
+																					}
+													</ul>
+													<divclass ="panel-footer text-right">
+														<ahref ="/Instructor/ShowMyCourses" class="btn btn-primary paper-shadow
+relative" data-z="0" data-hover-z="1" data-animated>
+															View all</a>
+															</div>
+															</div>
+															</div>
+															</div>
+															</div>
+														
+															</div>
+															<!-- /st-content-inner -->
+															</div>
+															<!-- /st-content -->
+															</div>

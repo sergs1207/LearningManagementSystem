@@ -1,0 +1,83 @@
+﻿@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	@if (ViewBag.QuizAlert != null)
+	{
+		<!-- whenever a new quiz is made then its success message will be shown here -->
+		<divclass ="alert alert-success alert-dismissable fade in">
+			
+			<ahref ="#" class="close" data-dismiss="alert" aria-label="close">
+				&times;</a>
+				<strong>@ViewBag.QuizAlert</strong>
+				@{
+					ViewBag.QuizAlert = null;
+				}
+				</div>
+			}
+	<br><h3style ="margin-left:10px; text-align:center;">
+		Quizes of your courses</h3>
+		@if (Model.Count > 0)
+		{
+			<!-- All quizes will be shown here with quiz title and course id -->
+			foreach (var q in Model)
+			{
+				<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+					<table>
+						<tr>
+							<td>
+								<pstyle ="font-family:Calibri; font-size:18px">
+									<b>
+										Quiz
+										Title
+									</b>&nbsp;&nbsp;&nbsp;&nbsp;:</p>
+							</td>
+							<td>
+								<pstyle ="font-family:'Times New Roman', Times, serif;font-size:15px;textalign:
+center;">&nbsp;&nbsp;&nbsp;&nbsp;@q.Title</p>
+</td>
+</tr>
+<tr>
+	
+	<td>
+		<pstyle ="font-family:Calibri; font-size:15px;text-align:right;">
+			<b>
+				Course
+				ID&nbsp;&nbsp;&nbsp;&nbsp;
+			</b>:</p>
+	</td>
+	<td>
+		<pstyle ="font-family:'Times New Roman', Times, serif;font-size:15px;textalign:
+left;">&nbsp;&nbsp;&nbsp;&nbsp;@q.CourseID</p>
+</td>
+</tr>
+</table>
+<buttontype ="button" onclick="location.href='@Url.Action("ShowQuizQuestions",
+"Instructor",new { QuizID = q.ID })'" style="float:right;" class="btn btn-primary">
+	Show
+	Questions</button><br><br>
+	</div>
+}
+}
+else
+{
+<!-- If there are no quizzes in the database then this error message will be displayed -->
+<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+	<table>
+		<tr>
+			<td>
+				<pstyle ="font-family:Calibri; font-size:18px">
+					<b>
+						No quizes made yet
+						!
+					</b></p>
+			</td>
+		</tr>
+	</table>
+	
+	</ div >
+}
+		</div>

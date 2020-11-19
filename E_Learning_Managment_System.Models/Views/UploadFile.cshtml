@@ -1,0 +1,41 @@
+﻿@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	@if (ViewBag.FileAlert != null)
+	{
+		<!-- Success message for adding file will be shown here -->
+		<divclass ="alert alert-success alert-dismissable fade in">
+			<ahref ="#" class="close" data-dismiss="alert" aria-label="close">
+				&times;</a>
+				<strong>@ViewBag.FileAlert</strong>
+				@{
+					
+			   ViewBag.FileAlert = null;
+				}
+				</div>
+			}
+	<br><h3style ="margin-left:10px; text-align:center;">
+		Upload Files</h3>
+		<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 10px; borderradius:
+4px; background-color:white;">
+			<table>
+				<tr>
+					<td>
+						<!-- Form -->
+						@using (Html.BeginForm("UploadFile", "Instructor", FormMethod.Post, new
+						{ enctype = "multipart/form-data" }))
+						{
+							<!-- Browse file -->
+							<label>upload file:</label><br>
+							<inputtype ="file" name="file" /><br>
+							<!-- Submit Button -->
+							<inputtype ="submit" />
+						}
+					</td>
+				</tr>
+			</table>
+			
+			</div>
+			</div>

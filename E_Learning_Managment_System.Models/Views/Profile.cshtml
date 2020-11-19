@@ -1,0 +1,128 @@
+﻿
+// View the profile of a student or instructor for LME4U
+@model E_Learning_Managment_System.Models.Instructor
+@{
+	ViewBag.Title = "LearningMadeEasy4u";
+	Layout = "~/Views/Shared/InstructorLayout.cshtml";
+}
+<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+	@if (ViewBag.password != null)
+	{
+		<!-- Wrong password error message will be shown here -->
+		<divclass ="alert alert-success alert-dismissable fade in">
+			<ahref ="#" class="close" data-dismiss="alert" aria-label="close">
+				&times;</a>
+				<strong>@ViewBag.password</strong>
+				@{
+					ViewBag.password = null;
+				}
+				</div>
+			}
+	<!-- sidebar effects INSIDE of st-pusher: -->
+	<!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+	<!-- this is the wrapper for the content -->
+	<divclass ="st-content">
+		<!-- extra div for emulating position:fixed of the menu -->
+		<divclass ="st-content-inner padding-none">
+			<divclass ="container-fluid">
+				<divclass ="page-section third">
+					<!-- Tabbable Widget -->
+					<divclass ="tabbable paper-shadow relative" data-z="0.5">
+						<!-- Tabs -->
+						<ulclass ="nav nav-tabs">
+							<liclass ="active">
+								<ahref ="app-student-profile.html">
+									<iclass ="fa fa-fw falock">
+										</
+										i><spanclass ="hidden-sm hidden-xs">
+											Manage Account</span></a></li>
+											</ul>
+											<!-- // END Tabs -->
+											<!-- Panes -->
+											<divclass ="tab-content">
+												<divid ="account" class="tab-pane active">
+													<formclass ="form-horizontal">
+														<divclass ="form-group">
+															<divstyle ="float:right;">
+																<br><br><br><br><labelfor ="changepassword" class="col-md-2 controllabel">
+																	<
+																	ahref="/Instructor/ChangePassword">Change Password</a></label>
+																	</div>
+
+																	<labelfor ="inputEmail3" class="col-sm-2 control-label">
+																		Avatar</label>
+																		<divclass ="col-md-6">
+																			<divclass ="media v-middle">
+																				<divclass ="media-left">
+																					<divclass ="icon-block width-100 bg-grey-100">
+																						<iclass ="fa fa-photo text-light">
+																							</i>
+																							</div>
+																							</div>
+																							</div>
+																							</div>
+																							</div>
+																							<!-- First name of the user will be shown here -->
+																							<divclass ="form-group">
+																								<labelfor ="inputEmail3" class="col-md-2 control-label">
+																									First Name</label>
+																									<divclass ="col-md-10">
+																										<divclass ="row">
+																											<divclass ="form-control-material">
+																												@Html.DisplayFor(m => m.FirstName, null, new
+																												{
+																													@class = "form-control",
+																													id = "exampleInputFirstName"
+																												})
+																												</div>
+																												</div>
+																												</div>
+																												<labelfor ="inputEmail3" class="col-md-2 control-label">
+																													Last Name</label>
+
+																													<divclass ="col-md-10">
+																														<divclass ="row">
+																															<divclass ="form-control-material">
+																																@Html.DisplayFor(m => m.LastName, null, new
+																																{
+																																	@class = "form-control",
+																																	id = "exampleInputLastName"
+																																})
+																																</div>
+																																</div>
+																																</div>
+																																</div>
+																																<!-- Email of the user will be shown here -->
+																																<divclass ="form-group">
+																																	<labelfor ="inputEmail3" class="col-md-2 control-label">
+																																		Email</label>
+																																		<divclass ="col-md-6">
+																																			<divclass ="form-control-material">
+																																				<divclass ="input-group">
+																																					<spanclass ="input-group-addon">
+																																						<iclass ="fa fa-envelope">
+																																							</i></span>
+																																							@Html.DisplayFor(m => m.Email, null, new
+																																							{
+																																								@class
+																																							= "form-control",
+																																								id = "inputEmail3"
+																																							})
+																																							</div>
+																																							</div>
+																																							</div>
+																																							</div>
+																																							</form>
+
+																																							</div>
+																																							</div>
+																																							<!-- // END Panes -->
+																																							</div>
+																																							<!-- // END Tabbable Widget -->
+																																							</div>
+																																							</div>
+																																							</div>
+																																							<!-- /st-content-inner -->
+																																							</div>
+																																							<!-- /st-content -->
+																																							</div>

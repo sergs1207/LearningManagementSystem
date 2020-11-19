@@ -1,0 +1,58 @@
+﻿<!—student registers a course in LME4U-->
+	@{
+		ViewBag.Title = "LearningMadeEasy4u";
+		Layout = "~/Views/Shared/StudentLayout.cshtml";
+	}
+	<divclass ="st-pusher well" style="overflow:scroll;" id="content">
+		<br><h3style ="margin-left:10px; text-align:center;">
+			Register Course</h3>
+			<divstyle ="border: 1pxsolidsilver; margin:10px10px0px10px; padding: 30px; borderradius:
+4px; background-color:white;">
+				<!-- Form -->
+				<formaction ="/Student/TakeCourse" method="post">
+					<!-- DropDownList of courses -->
+					<selectname ="CourseID" class="form-control" style="font-family:Calibri;fontsize:
+18px;">
+						@if (Model.Count <= 0)
+						{
+							<optiondisabledselected>
+								--No courses to show--</option>
+							}
+						
+						else
+						{
+						<optiondisabledselected>
+							--Select a Course--</option>
+							foreach (var course in Model)
+							{
+							<optionvalue ="@course.CourseID">
+								Code: @course.CourseID, Title:
+								@course.CourseTitle</option>
+								}
+								}
+								</select><br>
+								<!-- Submit button -->
+								<center>
+									<inputtype ="submit" value="Register" style="width:15%;" class="btn btnprimary">
+										</
+										center>
+										</form>
+										</div>
+										</div>
+										<script>
+//Form validation function
+$(function () {
+$("form").validate({
+rules: {
+CourseID: "required"
+
+},
+messages: {
+CourseID: "You have to select a course",
+},
+submit: function (form) {
+form.submit();
+}
+});
+});
+										</script>

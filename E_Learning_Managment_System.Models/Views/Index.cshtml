@@ -1,0 +1,292 @@
+﻿//Index.cshtml to view the homepage for LME4U
+<!DOCTYPE html>
+<html class="transition-navbar-scroll top-navbar-xlarge bottom-footer" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>LearningMadeEasy4u</title>
+
+	<link href=" ~/Design/css/vendor/all.css" rel="stylesheet" />
+	<link href="~/Design/css/app/app.css" rel="stylesheet" />
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-default navbar-fixed-top navbar-size-large navbar-size-xlarge
+paper-shadow" data-z="0" data-animated role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" datatarget="#
+main-nav">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="navbar-brand navbar-brand-logo">
+					<h3>LearningMadeEasy4u</h3>
+				</div>
+
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="main-nav">
+				<ul class="nav navbar-nav navbar-nav-margin-left">
+					<li class="dropdown active">
+						@Html.ActionLink("Home Page", "Index")
+					</li>
+					<li class="dropdown">
+						@Html.ActionLink("Student Login", "Login", "Student")
+					</li>
+					<li class="dropdown">
+						@Html.ActionLink("Instructor Login", "Login", "Instructor")
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	</div>
+	<!-- body container -->
+	<!-- image container -->
+
+	<div class="parallax cover overlay cover-image-full home">
+		<img class="parallax-layer" src="~/Views/Home/images/photodune-4161018-group-ofstudents-
+m.jpg" alt="Learning Cover" />
+		<div class="parallax-layer overlay overlay-full overlay-bg-white bg-transparent" dataspeed="
+8" data-opacity="true">
+		</div>
+	</div>
+	<div class="container">
+		<div class="page-section-heading">
+			<h2 class="text-display-1">Features</h2>
+			<p class="lead text-muted">Learn about all of the features we offer.</p>
+		</div>
+		<div class="row" data-toggle="gridalicious">
+			<div class="media">
+				<div class="media-left padding-none">
+					<div class="bg-green-300 text-white">
+						<div class="panel-body">
+							<i class="fa fa-film fa-2x fa-fw"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="media-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="text-headline">Watch Best Courses</div>
+							<p>
+								We have the best tutors with advance level of skills. Hurry and get them more are
+								waiting.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="media">
+				<div class="media-left padding-none">
+					<div class="bg-purple-300 text-white">
+						<div class="panel-body">
+							<i class="fa fa-life-bouy fa-2x fa-fw"></i>
+						</div>
+					</div>
+				</div>
+				<div class="media-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="text-headline">Extra Support</div>
+
+							<p>Tutors with extra skills will be available for students to message them privately.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="media">
+				<div class="media-left padding-none">
+					<div class="bg-orange-400 text-white">
+						<div class="panel-body">
+							<i class="fa fa-user fa-2x fa-fw"></i>
+						</div>
+					</div>
+				</div>
+				<div class="media-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="text-headline">Learn from Top Tutors</div>
+							<p>This website has some top level tutors who are expert in their respective fields.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="media">
+				<div class="media-left padding-none">
+					<div class="bg-cyan-400 text-white">
+						<div class="panel-body">
+							<i class="fa fa-code fa-2x fa-fw"></i>
+						</div>
+					</div>
+				</div>
+				<div class="media-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="text-headline">Lesson Source Files</div>
+							<p>
+								Every course will contain their respective source files, Such as document files, pdf
+								file and power point slides.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="media">
+				<div class="media-left padding-none">
+					<div class="bg-pink-400 text-white">
+
+						<div class="panel-body">
+							<i class="fa fa-print fa-2x fa-fw"></i>
+						</div>
+					</div>
+				</div>
+				<div class="media-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="text-headline">Printed Diploma</div>
+							<p>
+								After the completion of course you have to give a final test, which will be taken in
+								order to test your skills and in the end if you pass it you will be given a certificate.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="media">
+				<div class="media-left padding-none">
+					<div class="bg-red-400 text-white">
+						<div class="panel-body">
+							<i class="fa fa-tasks fa-2x fa-fw"></i>
+						</div>
+					</div>
+
+				</div>
+				<div class="media-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="text-headline">New Lessons Every Day</div>
+							<p>Each and every day out tutors are uploading new and latest tutorials.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="parallax cover overlay height-300 margin-none">
+		<img class="parallax-layer" data-auto-offset="true" data-auto-size="false"
+			 src="~/Views/Home/images/photodune-6745579-modern-creative-man-relaxing-onworkspace-
+m.jpg" alt="Learning Cover" />
+		<div class="parallax-layer overlay overlay-full overlay-bg-white bg-transparent" dataopacity="
+true" data-speed="8">
+			<div class="v-center">
+				<div class="page-section">
+					<h1 class="text-display-2 overlay-bg-white margin-v-0-15 inline-block">
+						Learn from
+						Home
+					</h1>
+
+					<br />
+					<p class="lead text-overlay overlay-bg-white-strong inline-block">
+						Just like others did the
+						same to improve their skills
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //body container -->
+	<!-- Footer -->
+	<section class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-3">
+					<h4 class="text-headline text-light">Corporate</h4>
+					<ul class="list-unstyled">
+						<li><a href="#">About the company</a></li>
+						<li><a href="#">Company offices</a></li>
+						<li><a href="#">Partners</a></li>
+						<li><a href="#">Terms of use</a></li>
+						<li><a href="#">Privacy</a></li>
+						<li><a href="#">Contact us</a></li>
+
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<h4 class="text-headline text-light">Explore</h4>
+					<ul class="list-unstyled">
+						<li><a href="">Courses</a></li>
+						<li><a href="">Tutors</a></li>
+						<li><a href="">Pricing</a></li>
+						<li><a href="">Become Tutor</a></li>
+						<li><a href="">Sign Up</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<h4 class="text-headline text-light">Newsletter</h4>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Enter email here...">
+							<span class="input-group-btn">
+								<button class="btn btn-grey-800" type="button">Subscribe</button>
+							</span>
+						</div>
+					</div>
+
+					<br />
+					<p>
+						<a href="#" class="btn btn-indigo-500 btn-circle"><i class="fa fa-facebook"></i></a>
+						<a href="#" class="btn btn-pink-500 btn-circle"><i class="fa fa-dribbble"></i></a>
+						<a href="#" class="btn btn-blue-500 btn-circle"><i class="fa fa-twitter"></i></a>
+						<a href="#" class="btn btn-danger btn-circle"><i class="fa fa-google-plus"></i></a>
+					</p>
+					<p class="text-subhead">
+						&copy; 2017 Learning App by diptiarora.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+		<strong>App By DiptiArora</strong>&copy; Copyright 2017
+	</footer>
+	<!-- // Footer -->
+	<!-- Inline Script for colors and config objects; used by various external scripts; -->
+	<script>
+
+var colors = {
+"danger-color": "#e74c3c",
+"success-color": "#81b53e",
+"warning-color": "#f0ad4e",
+"inverse-color": "#2c3e50",
+"info-color": "#2d7cb5",
+"default-color": "#6e7882",
+"default-light-color": "#cfd9db",
+"purple-color": "#9D8AC7",
+"mustard-color": "#d4d171",
+"lightred-color": "#e15258",
+"body-bg": "#f6f6f6"
+};
+var config = {
+theme: "html",
+skins: {
+"default": {
+"primary-color": "#42a5f5"
+}
+}
+};
+	</script>
+	<script src="~/Design/js/app/app.js"></script>
+
+	<script src="~/Design/js/vendor/all.js"></script>
+</body>
+</html>
